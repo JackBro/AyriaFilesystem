@@ -187,6 +187,8 @@
     <ClInclude Include="Source\Configuration\Defines.h" />
     <ClInclude Include="Source\Configuration\Macros.h" />
     <ClInclude Include="Source\Configuration\Warnings.h" />
+    <ClInclude Include="Source\Filestorage\Fileheader.h" />
+    <ClInclude Include="Source\Filestorage\Filemanager.h" />
     <ClInclude Include="Source\Utilities\All.h" />
     <ClInclude Include="Source\Utilities\Binarymodification\Hooking.h" />
     <ClInclude Include="Source\Utilities\Binarymodification\Hooks\Hooking.h" />
@@ -200,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\DllMain.cpp" />
+    <ClCompile Include="Source\Filestorage\Filemanager.cpp" />
     <ClCompile Include="Source\Utilities\Binarymodification\Callhook.cpp" />
     <ClCompile Include="Source\Utilities\Binarymodification\ImportAddressTable.cpp" />
     <ClCompile Include="Source\Utilities\Binarymodification\Stomphook.cpp" />
