@@ -1,0 +1,11 @@
+﻿
+*.db
+*.opendb
+*.filters
+*.user
+*.suo
+*.sln
+*.iobj
+*.ipdb
+/Copy.bat
+/AyriaFilesystem.licenseheader
