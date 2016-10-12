@@ -11,6 +11,7 @@
 #include "Files/CSV.h"
 #include "Binary/IAT.h"
 #include "Crypto/FNV1.h"
+#include "Binary/Hooks.h"
 #include "Files/Filesystem.h"
 #include "Binary/Memprotect.h"
 #include "Strings/Debugstring.h"
