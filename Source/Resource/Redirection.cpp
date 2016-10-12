@@ -33,7 +33,6 @@ HANDLE __stdcall ReplaceCreateFileW(LPCWSTR lpFileName, DWORD dwDesiredAccess, D
     else
         return CreateFileW(lpFileName, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
 }
-
 #else
 
 #endif

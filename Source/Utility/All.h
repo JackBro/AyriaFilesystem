@@ -12,5 +12,6 @@
 #include "Binary/IAT.h"
 #include "Crypto/FNV1.h"
 #include "Files/Filesystem.h"
+#include "Binary/Memprotect.h"
 #include "Strings/Debugstring.h"
 #include "Strings/Variadicstring.h"
