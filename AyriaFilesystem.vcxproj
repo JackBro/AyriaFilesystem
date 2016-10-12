@@ -183,37 +183,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Configuration\All.h" />
-    <ClInclude Include="Source\Configuration\Defines.h" />
-    <ClInclude Include="Source\Configuration\Macros.h" />
-    <ClInclude Include="Source\Configuration\Warnings.h" />
-    <ClInclude Include="Source\Filestorage\Fileheader.h" />
-    <ClInclude Include="Source\Filestorage\Filemanager.h" />
-    <ClInclude Include="Source\Utilities\All.h" />
-    <ClInclude Include="Source\Utilities\Binarymodification\Hooking.h" />
     <ClInclude Include="Source\Utilities\Binarymodification\Hooks\Hooking.h" />
-    <ClInclude Include="Source\Utilities\Binarymodification\ImportAddressTable.h" />
-    <ClInclude Include="Source\Utilities\Buffers\Bytebuffer.h" />
-    <ClInclude Include="Source\Utilities\Cryptography\Hashing\FNV1.h" />
-    <ClInclude Include="Source\Utilities\Files\CSVManager.h" />
-    <ClInclude Include="Source\Utilities\Files\Filesystem.h" />
-    <ClInclude Include="Source\Utilities\Strings\Debugstring.h" />
-    <ClInclude Include="Source\Utilities\Strings\Variadicstring.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source\DllMain.cpp" />
-    <ClCompile Include="Source\Filestorage\Filemanager.cpp" />
-    <ClCompile Include="Source\Utilities\Binarymodification\Callhook.cpp" />
-    <ClCompile Include="Source\Utilities\Binarymodification\ImportAddressTable.cpp" />
-    <ClCompile Include="Source\Utilities\Binarymodification\Stomphook.cpp" />
-    <ClCompile Include="Source\Utilities\Buffers\Bytebuffer.cpp" />
-    <ClCompile Include="Source\Utilities\Files\CSVManager.cpp" />
-    <ClCompile Include="Source\Utilities\Files\Filesystem.cpp" />
-    <ClCompile Include="Source\Utilities\Strings\Debugstring.cpp" />
-    <ClCompile Include="Source\Utilities\Strings\Variadicstring.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AyriaFilesystem.licenseheader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
