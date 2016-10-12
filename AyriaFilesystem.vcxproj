@@ -183,7 +183,22 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Configuration\All.h" />
+    <ClInclude Include="Source\Configuration\Defines.h" />
+    <ClInclude Include="Source\Configuration\Macros.h" />
+    <ClInclude Include="Source\Configuration\Warnings.h" />
+    <ClInclude Include="Source\STDInclude.h" />
     <ClInclude Include="Source\Utilities\Binarymodification\Hooks\Hooking.h" />
+    <ClInclude Include="Source\Utility\All.h" />
+    <ClInclude Include="Source\Utility\Crypto\FNV1.h" />
+    <ClInclude Include="Source\Utility\Files\Filesystem.h" />
+    <ClInclude Include="Source\Utility\Strings\Debugstring.h" />
+    <ClInclude Include="Source\Utility\Strings\Variadicstring.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Utility\Files\Filesystem.cpp" />
+    <ClCompile Include="Source\Utility\Strings\Debugstring.cpp" />
+    <ClCompile Include="Source\Utility\Strings\Variadicstring.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
