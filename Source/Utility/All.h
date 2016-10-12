@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include "Binary/IAT.h"
 #include "Crypto/FNV1.h"
 #include "Files/Filesystem.h"
 #include "Strings/Debugstring.h"
