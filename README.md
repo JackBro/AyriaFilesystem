@@ -5,6 +5,7 @@ This plugin is intended to speed up loading of an applications files. The initia
 
 - [x] Replacement of fopen to allow plugins to load alternative gamefiles.
 - [x] Read a list of replacements from `./Plugins/AyriaFS/Replacements.csv`
+- [x] Deep hooks for protected binaries.
 - [ ] RAM-drive implementation for faster loading of select directories.
 - [ ] Heatmap over the gamefiles to pre-load common files.
 - [ ] RAID0-ish fileloading based on the fopen redirection.
