@@ -18,9 +18,20 @@ HANDLE __stdcall ReplaceCreateFileA(LPCSTR lpFileName, DWORD dwDesiredAccess, DW
 {
     auto Result = Replacementmap.find(lpFileName);
     if (Result != Replacementmap.end())
-        lpFileName = Result->second.c_str();
+        return CreateFileA(Result->second.c_str(), dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
+    else
+        return CreateFileA(lpFileName, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
+}
+HANDLE __stdcall ReplaceCreateFileW(LPCWSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile)
+{
+    std::wstring Wide(lpFileName);
+    std::string Ascii(Wide.begin(), Wide.end());
 
-    return CreateFileA(lpFileName, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
+    auto Result = Replacementmap.find(Ascii);
+    if (Result != Replacementmap.end())
+        return CreateFileA(Result->second.c_str(), dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
+    else
+        return CreateFileW(lpFileName, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
 }
 
 #else
@@ -38,4 +49,20 @@ void InitializeFopenReplacement()
 {
     auto Address = COAL::IAT::Findfunction("Kernel32.dll", "CreateFileA");
     if (Address) *(size_t *)Address = size_t(ReplaceCreateFileA);
+    Address = COAL::IAT::Findfunction("Kernel32.dll", "CreateFileW");
+    if (Address) *(size_t *)Address = size_t(ReplaceCreateFileW);
+
+    // Load replacements from a file if available.
+    COAL::CSV::Manager CSVReader;
+    if (CSVReader.Readfile("./Plugins/AyriaFS/Replacements.csv"))
+    {
+        for (size_t Row = 0; ; ++Row)
+        {
+            // End of buffer check.
+            if (CSVReader.Value(Row, 0).size() == 0)
+                break;
+
+            Replacefile(CSVReader.Value(Row, 0).c_str(), CSVReader.Value(Row, 1).c_str());
+        }
+    }
 }
