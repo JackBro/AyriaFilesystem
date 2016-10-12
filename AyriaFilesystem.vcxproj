@@ -196,9 +196,13 @@
     <ClInclude Include="Source\Utility\Strings\Variadicstring.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Dllmain.cpp" />
     <ClCompile Include="Source\Utility\Files\Filesystem.cpp" />
     <ClCompile Include="Source\Utility\Strings\Debugstring.cpp" />
     <ClCompile Include="Source\Utility\Strings\Variadicstring.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AyriaFilesystem.licenseheader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
