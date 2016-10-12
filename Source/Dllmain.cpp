@@ -12,6 +12,7 @@
 
 // Systems we manage.
 extern void InitializeFopenReplacement();
+extern "C" void __cdecl Replacefile(const char *Oldname, const char *Newname);
 
 extern "C"
 {
@@ -34,6 +35,11 @@ extern "C"
         // Messages are a 32bit FNV1a hash of a string.
         switch (Message)
         {
+        case COAL::FNV1::Compiletime::FNV1a_32("Replacefile"):
+        {
+            Replacefile(va_arg(Variadic, char *), va_arg(Variadic, char *));
+            break;
+        }
 
         case COAL::FNV1::Compiletime::FNV1a_32("DefaultCase"):
         default:
