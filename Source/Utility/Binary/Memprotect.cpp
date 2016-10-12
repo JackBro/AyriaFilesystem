@@ -11,12 +11,12 @@
 #ifdef _WIN32
 #include <Windows.h>
 
-void Protectrange(void *Address, const size_t Length, unsigned long Oldprotect)
+void COAL::Memprotect::Protectrange(void *Address, const size_t Length, unsigned long Oldprotect)
 {
     unsigned long Temp;
     VirtualProtect(Address, Length, Oldprotect, &Temp);
 }
-unsigned long Unprotectrange(void *Address, const size_t Length)
+unsigned long COAL::Memprotect::Unprotectrange(void *Address, const size_t Length)
 {
     unsigned long Oldprotect;
     VirtualProtect(Address, Length, PAGE_EXECUTE_READWRITE, &Oldprotect);
@@ -26,11 +26,11 @@ unsigned long Unprotectrange(void *Address, const size_t Length)
 #else
 #include <sys/mman.h>
 
-void Protectrange(void *Address, const size_t Length, unsigned long Oldprotect)
+void COAL::Memprotect::Protectrange(void *Address, const size_t Length, unsigned long Oldprotect)
 {
     mprotect(Address, Length, Oldprotect);
 }
-unsigned long Unprotectrange(void *Address, const size_t Length)
+unsigned long COAL::Memprotect::Unprotectrange(void *Address, const size_t Length)
 {
     /*
         TODO(Convery):
