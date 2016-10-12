@@ -3,9 +3,11 @@ Ayrias Filesystem Plugin
 
 This plugin is intended to speed up loading of an applications files. The initial version is planned to feature:
 
-* A RAM-drive implementation to load everything from a directory into memory.
-* Loading of related files into memory based on filename-triggers.
-* Multi-drive directories, basically a RAID0 implementation to maximize bandwidth usage.
+- [x] Replacement of fopen to allow plugins to load alternative gamefiles.
+- [ ] RAM-drive implementation for faster loading of select directories.
+- [ ] Heatmap over the gamefiles to pre-load common files.
+- [ ] RAID0-ish fileloading based on the fopen redirection.
+- [ ] Loading files based on triggers, e.g. when `q3dm1.bsp` loads; also load `/models/players/mychar.skin`
 
 Extensionloading
 --
