@@ -9,3 +9,4 @@
 *.ipdb
 /Copy.bat
 /AyriaFilesystem.licenseheader
+/Source/Utility/Binary/Copy.bat

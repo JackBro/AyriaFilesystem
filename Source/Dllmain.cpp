@@ -10,6 +10,9 @@
 #include <cstdint>
 #include <cstdarg>
 
+// Systems we manage.
+extern void InitializeFopenReplacement();
+
 extern "C"
 {
     // Ayrias extension exports as per the 2016 standard.
@@ -18,6 +21,7 @@ extern "C"
     }
     EXPORT_ATTR void __cdecl onInitializationStart(void)
     {
+        InitializeFopenReplacement();
     }
     EXPORT_ATTR void __cdecl onInitializationComplete(void)
     {

@@ -190,6 +190,7 @@
     <ClInclude Include="Source\STDInclude.h" />
     <ClInclude Include="Source\Utilities\Binarymodification\Hooks\Hooking.h" />
     <ClInclude Include="Source\Utility\All.h" />
+    <ClInclude Include="Source\Utility\Binary\IAT.h" />
     <ClInclude Include="Source\Utility\Crypto\FNV1.h" />
     <ClInclude Include="Source\Utility\Files\Filesystem.h" />
     <ClInclude Include="Source\Utility\Strings\Debugstring.h" />
@@ -197,6 +198,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Dllmain.cpp" />
+    <ClCompile Include="Source\Resource\Redirection.cpp" />
+    <ClCompile Include="Source\Utility\Binary\IAT.cpp" />
     <ClCompile Include="Source\Utility\Files\Filesystem.cpp" />
     <ClCompile Include="Source\Utility\Strings\Debugstring.cpp" />
     <ClCompile Include="Source\Utility\Strings\Variadicstring.cpp" />
