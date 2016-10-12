@@ -47,10 +47,14 @@ extern "C" EXPORT_ATTR void __cdecl Replacefile(const char *Oldname, const char 
 // Initialize the system.
 void InitializeFopenReplacement()
 {
+#ifdef _WIN32
     auto Address = COAL::IAT::Findfunction("Kernel32.dll", "CreateFileA");
     if (Address) *(size_t *)Address = size_t(ReplaceCreateFileA);
     Address = COAL::IAT::Findfunction("Kernel32.dll", "CreateFileW");
     if (Address) *(size_t *)Address = size_t(ReplaceCreateFileW);
+#else
+
+#endif
 
     // Load replacements from a file if available.
     COAL::CSV::Manager CSVReader;
