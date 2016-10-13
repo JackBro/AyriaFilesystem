@@ -8,6 +8,7 @@
 
 #include <STDInclude.h>
 #include <unordered_map>
+#include <algorithm>
 
 std::unordered_map<std::wstring /* Old */, std::wstring /* New */> Replacementmap;
 std::unordered_map<std::string, void *> Stomphooks;
@@ -19,6 +20,9 @@ HANDLE __stdcall ReplaceCreateFileA(LPCSTR lpFileName, DWORD dwDesiredAccess, DW
 {
     HANDLE Result;
     std::string Ascii(lpFileName);
+
+    // Make the checked string lowercase.
+    std::transform(Ascii.begin(), Ascii.end(), Ascii.begin(), tolower);
 
     auto Replace = Replacementmap.find({ Ascii.begin(), Ascii.end() });
     if (Replace != Replacementmap.end())
@@ -45,8 +49,12 @@ HANDLE __stdcall ReplaceCreateFileA(LPCSTR lpFileName, DWORD dwDesiredAccess, DW
 HANDLE __stdcall ReplaceCreateFileW(LPCWSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile)
 {
     HANDLE Result;
+    std::wstring Wide(lpFileName);
 
-    auto Replace = Replacementmap.find(lpFileName);
+    // Make the checked string lowercase.
+    std::transform(Wide.begin(), Wide.end(), Wide.begin(), towlower);
+
+    auto Replace = Replacementmap.find(Wide);
     if (Replace != Replacementmap.end())
         lpFileName = Replace->second.c_str();
 
@@ -75,7 +83,10 @@ extern "C" EXPORT_ATTR void __cdecl Replacefile(const char *Oldname, const char 
     std::string Index = Oldname;
     std::string Value = Newname;
 
-    Replacementmap[{Index.begin(), Index.end()}] = { Value.begin(), Value.end() };
+    // Make the checked string lowercase.
+    std::transform(Index.begin(), Index.end(), Index.begin(), tolower);
+
+    Replacementmap[{ Index.begin(), Index.end() }] = { Value.begin(), Value.end() };
 }
 
 // Initialize the system.
