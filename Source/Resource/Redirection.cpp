@@ -112,17 +112,23 @@ void InitializeFopenReplacement()
 
 #endif
 
-    // Load replacements from a file if available.
-    COAL::CSV::Manager CSVReader;
-    if (CSVReader.Readfile("./Plugins/AyriaFS/Replacements.csv"))
-    {
-        for (size_t Row = 0; ; ++Row)
-        {
-            // End of buffer check.
-            if (CSVReader.Value(Row, 0).size() == 0)
-                break;
+    // Load all replacement files from the /AyriaFS directory.
+    std::vector<std::string> Filenames;
+    COAL::File::List("./Plugins/AyriaFS", &Filenames, "Replacements");
 
-            Replacefile(CSVReader.Value(Row, 0).c_str(), CSVReader.Value(Row, 1).c_str());
+    for (auto &Filename : Filenames)
+    {
+        COAL::CSV::Manager CSVReader;
+        if (CSVReader.Readfile("./Plugins/AyriaFS/" + Filename))
+        {
+            for (size_t Row = 0; ; ++Row)
+            {
+                // End of buffer check.
+                if (CSVReader.Value(Row, 0).size() == 0)
+                    break;
+
+                Replacefile(CSVReader.Value(Row, 0).c_str(), CSVReader.Value(Row, 1).c_str());
+            }
         }
     }
 }
